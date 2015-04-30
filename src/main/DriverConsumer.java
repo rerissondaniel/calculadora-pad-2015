@@ -9,6 +9,7 @@ public class DriverConsumer {
 	Calculadora calc = new Calculadora();
 	FileManager in = new FileManager("feed.txt");
 	FileManager out = new FileManager("feedback.txt");
+	FileManager log = new FileManager("results.txt");
 	Scanner input;
 
 	public DriverConsumer(Calculadora calc) {
@@ -69,6 +70,7 @@ public class DriverConsumer {
 				result += new SimpleDateFormat("dd/MM/yyyy - hh:mm:ss").format(System.currentTimeMillis());
 				System.out.println(result);
 				out.addContent(result);
+				log.addContent(result);
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
