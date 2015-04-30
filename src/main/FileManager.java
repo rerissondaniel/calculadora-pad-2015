@@ -4,8 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class FileManager {
 	private File file;
@@ -27,11 +25,9 @@ public class FileManager {
 
 	public void addContent(String content) {
 		try {
-			SimpleDateFormat sdt = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file,
 					true));
-			writer.write(content + " "
-					+ sdt.format(new Date(System.currentTimeMillis())) + "\n");
+			writer.write(content + "\n");
 			writer.close();
 		} catch (IOException e) {
 			System.out.println("Erro ao escrever no arquivo.");
@@ -50,6 +46,7 @@ public class FileManager {
 	}
 
 	public boolean isEmpty() {
+		if(!getFile().exists())return true;
 		return getFile().length() == 0;
 	}
 }
