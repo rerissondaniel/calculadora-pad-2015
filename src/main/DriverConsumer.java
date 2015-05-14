@@ -67,9 +67,9 @@ public class DriverConsumer {
 						break;
 					}
 				}
-				result += new SimpleDateFormat("dd/MM/yyyy - hh:mm:ss").format(System.currentTimeMillis());
 				System.out.println(result);
 				out.addContent(result);
+				result += new SimpleDateFormat("dd/MM/yyyy - hh:mm:ss").format(System.currentTimeMillis());
 				log.addContent(result);
 				try {
 					Thread.sleep(2000);

@@ -44,8 +44,7 @@ public class DriverProducer {
 					input = new Scanner(in.getFile());
 				} catch (IOException e) {
 					e.printStackTrace();
-				}
-				System.out.println(input.nextLine());
+				} 
 				input.close();
 				in.erase();
 			}
