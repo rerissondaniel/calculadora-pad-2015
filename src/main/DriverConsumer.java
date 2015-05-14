@@ -50,10 +50,6 @@ public class DriverConsumer {
 			}
 			}
 			System.out.println(result);
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-			}
 		}
 	}
 
