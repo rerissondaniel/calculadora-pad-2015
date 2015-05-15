@@ -59,7 +59,7 @@ public class DriverConsumer {
 					}
 					case '/': {
 						if (num2 == 0) {
-							result = String.format("%d + %d = %s ", num1, num2,
+							result = String.format("%d / %d = %s ", num1, num2,
 									"Indefinido");
 						} else
 							result = String.format("%d / %d = %.0f ", num1, num2,
