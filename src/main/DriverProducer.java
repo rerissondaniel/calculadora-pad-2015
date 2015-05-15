@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class DriverProducer {
 	
-	public void produce(int numProductions) {
+	public void produce() {
 		FileManager in = new FileManager("feedback.txt");
 		FileManager out = new FileManager("feed.txt");
 		Random generator = new Random();
@@ -52,6 +52,6 @@ public class DriverProducer {
 	}
 	
 	public static void main(String[] args) {
-		new DriverProducer().produce(10);
+		new DriverProducer().produce();
 	}
 }
