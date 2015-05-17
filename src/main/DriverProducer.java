@@ -7,14 +7,20 @@ import java.util.Scanner;
 
 public class DriverProducer {
 	
-	public int getPid(){
+	FileManager in = new FileManager("data/" + this.getPid()
+			+ "/feedback.txt");
+	FileManager out = new FileManager("data/" + this.getPid() + "/feed.txt");
+
+	public DriverProducer() {
+		new FileManager("pidList.txt").addContent(String.format("%d",
+				getPid()));
+	}
+	public int getPid() {
 		String name = ManagementFactory.getRuntimeMXBean().getName();
 		return Integer.parseInt(name.substring(0, name.indexOf('@')));
 	}
-	
+
 	public void produce() {
-		FileManager in = new FileManager("feedback.txt");
-		FileManager out = new FileManager("feed.txt");
 		Random generator = new Random();
 
 		int num1, num2, op;
@@ -43,7 +49,6 @@ public class DriverProducer {
 					break;
 				}
 				out.addContent(data + " PID: " + this.getPid());
-				System.out.println(data + " PID: " + this.getPid());
 			} else if (!in.isEmpty()) {
 				Scanner input = null;
 				try {
@@ -51,15 +56,16 @@ public class DriverProducer {
 						in.getFile().createNewFile();
 					}
 					input = new Scanner(in.getFile());
+					System.out.println(input.nextLine());
 				} catch (IOException e) {
 					e.printStackTrace();
-				} 
+				}
 				input.close();
 				in.erase();
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		new DriverProducer().produce();
 	}

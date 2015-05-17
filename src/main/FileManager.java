@@ -13,6 +13,15 @@ public class FileManager {
 
 	public FileManager(String fileName) {
 		this.file = new File(fileName);
+		try {
+			if (!file.exists()) {
+				if(file.getParentFile() != null)
+					file.getParentFile().mkdirs();
+				file.createNewFile();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public File getFile() {
@@ -44,7 +53,7 @@ public class FileManager {
 		}
 
 	}
-
+	
 	public boolean isEmpty() {
 		if(!getFile().exists())return true;
 		return getFile().length() == 0;
