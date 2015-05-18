@@ -51,16 +51,22 @@ public class DriverConsumer implements Runnable {
 			break;
 		}
 		}
+		result += tokens[3];
 		System.out.println(result);
 
 	}
 
 	public static void main(String[] args) {
 		Resource res = new Resource();
-		Thread t1 = new Thread(new DriverConsumer(res));
-		Thread t2 = new Thread(new Producer(res));
+		Thread t1 = new Thread(new DriverConsumer(res)), 
+				t2;
+		Producer[] producers = new Producer[5];
+		for(int i = 0; i < 5; i++){
+			producers[i] = new Producer(res, i + 1);
+			t2 = new Thread(producers[i]);
+			t2.start();
+		}
 		t1.start();
-		t2.start();
 	}
 
 	@Override

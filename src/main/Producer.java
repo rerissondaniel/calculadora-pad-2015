@@ -5,11 +5,12 @@ import java.util.Random;
 public class Producer implements Runnable {
 
 	Resource resource;
-	
+	int id;
 
-	public Producer(Resource resource) {
+	public Producer(Resource resource, int id) {
 		super();
 		this.resource = resource;
+		this.id = id;
 	}
 
 	public String produce() {
@@ -25,13 +26,13 @@ public class Producer implements Runnable {
 		op = generator.nextInt(4);
 		switch (op) {
 		case 0:
-			return (String.format("%d %c %d", num1, '+', num2));
+			return (String.format("%d %c %d ", num1, '+', num2)) + id;
 		case 1:
-			return (String.format("%d %c %d", num1, '-', num2));
+			return (String.format("%d %c %d ", num1, '-', num2)) + id;
 		case 2:
-			return (String.format("%d %c %d", num1, '*', num2));
+			return (String.format("%d %c %d ", num1, '*', num2)) + id;
 		case 3:
-			return (String.format("%d %c %d", num1, '/', num2));
+			return (String.format("%d %c %d ", num1, '/', num2)) + id;
 		}
 		return "";
 	}
