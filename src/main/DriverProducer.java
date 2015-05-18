@@ -42,6 +42,7 @@ public class DriverProducer {
 						in.getFile().createNewFile();
 					}
 					input = new Scanner(in.getFile());
+					System.out.println("Produzi " + input.nextLine());
 				} catch (IOException e) {
 					e.printStackTrace();
 				} 
